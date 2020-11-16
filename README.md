@@ -1,2 +1,2 @@
-# spacesort
-✨ Fast sorting algorithm in space
+# Spacesort
+✨ A fast sorting using space
