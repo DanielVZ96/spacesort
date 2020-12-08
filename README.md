@@ -1,4 +1,4 @@
-# Spacesort
+# (S p a c e s o r t)
 ✨ Fast sorting using space
 
 This is a sorting algorithm that mixes comparative and non-comparative methods depending 
