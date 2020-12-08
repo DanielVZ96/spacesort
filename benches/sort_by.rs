@@ -1,6 +1,6 @@
 use criterion::BenchmarkId;
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
-use space_sort::*;
+use spacesort::*;
 extern crate quickersort;
 extern crate rand;
 extern crate rand_pcg;
