@@ -21,7 +21,7 @@ impl<T> SpaceSortable for T where
 }
 
 fn should_use_space(len: f64, range: f64) -> bool {
-    return range <= ((8.3339 * f64::from(10).powi(-7)) * len.powi(2)) - 9.16638 * len + 228.583;
+    return range <= ((8.3339e-7f64) * len.powi(2)) - 9.16638 * len + 228.583;
 }
 
 pub fn space_sort<T: SpaceSortable>(v: Vec<T>) -> Vec<T> {
@@ -191,51 +191,6 @@ pub fn sort_v2_fair(v: Vec<usize>) -> Vec<usize> {
         .flatten()
         .collect();
 }
-//pub fn counting_sort(arr: Vec<usize>) -> Vec<usize> {
-//    let maxval: usize = *arr.iter().max().unwrap();
-//    let mut occurences: Vec<usize> = vec![0; maxval + 1];
-//    for &data in arr.iter() {
-//        occurences[data] += 1;
-//    }
-//    let mut i = 0;
-//    let mut res = vec![0; arr.len()];
-//    for (data, &number) in occurences.iter().enumerate() {
-//        for _ in 0..number {
-//            res[i] = data;
-//            i += 1;
-//        }
-//    }
-//    return res;
-//}
-
-//pub fn sort_v2_fair_v2(v: Vec<usize>) -> Vec<usize> {
-//    let min = v.iter().min().unwrap();
-//    let max = v.iter().max().unwrap() - min; // not real max
-//    let can_be_set = max <= v.len();
-//    let is_set;
-//    if can_be_set {
-//        is_set = !has_dup(&v);
-//    } else {
-//        is_set = false;
-//    }
-//
-//    if is_set {
-//        return sort_v2(v);
-//    } else {
-//        //let mut index : Vec<usize> = vec![0; max+1];
-//        let mut index: Vec<usize> = vec![0; max + 1];
-//        for i in &v {
-//            index[i - min] += 1;
-//        }
-//        return index
-//            .iter()
-//            .filter(|x| **x != 0)
-//            .enumerate()
-//            .map(|(i, c)| vec![i + min; *c])
-//            .flatten()
-//            .collect();
-//    }
-//}
 
 #[cfg(test)]
 mod tests {
@@ -264,47 +219,4 @@ mod tests {
         let v = vec![4, 3, 2, 1];
         assert_eq!(vec![1, 2, 3, 4], space_sort_not_set(v, 4, 1, 4));
     }
-    //    #[test]
-    //    fn test_sort_v1() {
-    //        let v = vec![1, 4, 3, 2];
-    //        assert_eq!(vec![1, 2, 3, 4], sort_v1(v));
-    //        let v = vec![4, 3, 2, 1];
-    //        assert_eq!(vec![1, 2, 3, 4], sort_v1(v));
-    //    }
-    //    #[test]
-    //    fn test_sort_v2() {
-    //        let v = vec![1, 4, 3, 2];
-    //        assert_eq!(
-    //            vec![1 as usize, 2 as usize, 3 as usize, 4 as usize],
-    //            sort_v2(v)
-    //        );
-    //        let v = vec![4, 3, 2, 1];
-    //        assert_eq!(vec![1, 2, 3, 4], sort_v2(v));
-    //    }
-    //    #[test]
-    //    fn test_sort_v2_fair_v2() {
-    //        let v = vec![1, 4, 3, 2];
-    //        assert_eq!(
-    //            vec![1 as usize, 2 as usize, 3 as usize, 4 as usize],
-    //            sort_v2_fair_v2(v)
-    //        );
-    //        let v = vec![4, 3, 2, 1];
-    //        assert_eq!(vec![1, 2, 3, 4], sort_v2_fair_v2(v));
-    //        let v = vec![4, 3, 2, 3, 1];
-    //        assert_eq!(vec![1, 2, 3, 3, 4], sort_v2_fair_v2(v));
-    //    }
-    //    #[test]
-    //    fn test_sort_v2_fair_v3() {
-    //        let v = vec![1, 4, 3, 2];
-    //        assert_eq!(
-    //            vec![1 as usize, 2 as usize, 3 as usize, 4 as usize],
-    //            sort_v2_fair_v2(v)
-    //        );
-    //        let v = vec![4, 3, 2, 1];
-    //        assert_eq!(vec![1, 2, 3, 4], sort_v2_fair_v3(v));
-    //        let v = vec![4, 3, 2, 3, 1];
-    //        assert_eq!(vec![1, 2, 3, 3, 4], sort_v2_fair_v3(v));
-    //        let v = vec![4, 3, 2, 2, 3, 1];
-    //        assert_eq!(vec![1, 2, 2, 3, 3, 4], sort_v2_fair_v3(v));
-    //    }
 }
